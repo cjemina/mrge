@@ -1,0 +1,30 @@
+<div *ngIf="job" class="job-container">
+  <div class="job-card">
+    <h2 class="job-title">{{ job.name }}</h2>
+    <p class="company"><strong>Company:</strong> {{ job.subcompany }}</p>
+    <p class="location">
+      <strong>Office:</strong> {{ job.office }}
+      <span *ngIf="job.additionalOffices">
+        ({{ job.additionalOffices.office }})</span
+      >
+    </p>
+
+    <div class="job-details">
+      <p><strong>Department:</strong> {{ job.department }}</p>
+      <p><strong>Employment Type:</strong> {{ job.employmentType }}</p>
+      <p><strong>Schedule:</strong> {{ job.schedule }}</p>
+      <p><strong>Experience:</strong> {{ job.yearsOfExperience }} years</p>
+      <p><strong>Keywords:</strong> {{ job.keywords }}</p>
+    </div>
+
+    <div
+      *ngFor="let description of job.jobDescriptions.jobDescription"
+      class="job-description"
+    >
+      <h3>{{ description.name }}</h3>
+      <p [innerHTML]="sanitizeHtml(description.value)"></p>
+    </div>
+
+    <button class="apply-button">Apply Now</button>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="job-container">
+  <h2 class="job-title">Post a Job</h2>
+  <form (submit)="submitJob()" #jobForm="ngForm">
+    <label for="title">Job Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="job.title"
+      required
+      placeholder="e.g. Software Engineer"
+    />
+
+    <label for="description">Job Description</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="job.description"
+      required
+      placeholder="Briefly describe the job responsibilities..."
+    ></textarea>
+
+    <label for="email">Contact Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="job.email"
+      required
+      placeholder="example@company.com"
+    />
+
+    <button type="submit" [disabled]="jobForm.invalid">Submit Job</button>
+  </form>
+</div>
